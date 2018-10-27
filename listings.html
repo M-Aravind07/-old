@@ -1,0 +1,92 @@
+<!This is just a template, final version must work in tandem with backend>
+<html>
+	<head>
+		<title>Home</title>
+		<link rel="stylesheet" href="{{url_for('static',filename='theme.css')}}"> 
+	</head>
+	<body>
+		<!--The header -->
+		<div class="header">
+			<a href="home.html"><h2 class="logo2">$</h2><h2 class="logo1">OLD!</h2></a>
+			<a href="pages/login"><button class="login">Log out</button></a>
+			<a href="pages/login"><button class="login">My bids</button></a>
+		</div>
+		<div class="page">
+			<table class="category">
+				<caption><i>CATEGORIES</i></caption>
+				<tr>
+					<td><button class="style2" onClick="parent.location='home.html'">All Categories</button></td>
+				</tr>
+				<tr>
+					<td><button class="style2" onClick="parent.location='books.html'">Books</button></td>
+				</tr>
+				<tr>
+					<td><button class="style2" onClick="parent.location='antiques.html'">Antiques</button></td>
+				</tr>
+				<tr>
+					<td><button class="style2" onClick="parent.location='clothing.html'">Clothing</button></td>
+				</tr>
+				<tr>
+					<td><button class="style2" onClick="parent.location='electronics.html'">Electronics</button></td>
+				</tr>
+				<tr>
+					<td><button class="style2" onClick="parent.location='collectibles.html'">Collectibles</button></td>
+				</tr><br>
+			</table>
+		</div>
+		<div class="page2">
+			<h2 class="inpage">All items:</h2><hr><br>
+			<!Start gallery here>
+			<div class="gallery">
+				<a href="apple.html">
+					<img src="url('/static/default.png')" alt="Not found! :(" width=300 height=200>
+				</a>
+				<div class="desc">
+					Item name placeholder
+				</div>
+			</div>
+			<div class="gallery">
+				<a href="butterscotch.html">
+					<img src="default.png" alt="Not found! :(" width=300 height=200>
+				</a>
+				<div class="desc">
+					Item name placeholder
+				</div>
+			</div>
+			<div class="gallery">
+				<a href="choco.html">
+					<img src="default.png" alt="Not found! :(" width=300 height=200>
+				</a>
+				<div class="desc">
+					Item name placeholder
+				</div>
+			</div>
+			<div class="gallery">
+				<a href="truffle.html">
+					<img src="default.png" alt="Not found! :(" width=300 height=200>
+				</a>
+				<div class="desc">
+					Item name placeholder
+				</div>
+			</div>
+			<div class="gallery">
+				<a href="red.html">
+					<img src="default.png" alt="Not found! :(" width=300 height=200>
+				</a>
+				<div class="desc">
+					Item name placeholder
+				</div>
+			</div>
+			<div class="gallery">
+				<a href="black.html">
+					<img src="default.png" alt="Not found! :(" width=300 height=200>
+				</a>
+				<div class="desc">
+					Item name placeholder
+				</div>
+			</div>
+			<!End gallery here>
+		</div>
+		
+	</body>
+</html>
