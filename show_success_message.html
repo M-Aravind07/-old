@@ -5,12 +5,38 @@
     </head>
 
     <body>
-        <p style="text-align:center">
-            <p style="color:green;font-size:20px"><strong> Product Added ! </strong></p>
-            <p> Product Name : {{pname}} </p>
-            <p> Product Type : {{ptype}} </p>
-            <p> Initial Bid : {{initbid}} </p>
-            <p> Posted By : {{uname}} </p>
-            </p>
+        <p style="color:green;font-size:34px;text-align: center;padding-top: 2%"><strong> Product Added ! </strong></p>
+        <hr>
+        <p style="text-align: center;padding-top: 2%">
+            <table border="1" align="center" cellspacing=1% cellpadding=15%>
+                <tr>
+                    <td> <strong>Product Name :</strong> </td> 
+                    <td> {{pname}} </td>
+                </tr>
+
+                <tr>
+                    <td> <strong>Product Type :</strong> </td> 
+                    <td> {{ptype}} </td>
+                </tr>
+
+                <tr>
+                    <td> <strong>Valid Until :</strong> </td> 
+                    <td> {{validuntil}}</td>
+                </tr>
+
+                <tr>
+                    <td> <strong>Posted by :</strong> </td> 
+                    <td> {{uname}} </td>
+                </tr>
+            </table>
+        </p>
+
+        <br>
+        <form action='/$old/goback_post' method="post">
+            <input type="hidden" name="uname" value="{{uname}}">
+            <a href="/$old/goback_post"><button style="size:20em;margin-left: 48%"><< Back</button></a>
+        </form>
+        <br><br><hr>
+
     </body>
 </html>

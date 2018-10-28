@@ -2,9 +2,36 @@
 <html>
 	<head>
 		<title>Welcome!</title>
-		<link rel="stylesheet" href="{{url_for('static',filename='theme.css')}}"> 
-		<script src="items.js"></script>
+		<link rel="stylesheet" href="{{url_for('static',filename='theme.css')}}">
+		
+		<script type="text/javascript">
+			function VerifyLoginDetails()
+			{
+				var ulogin=document.forms["loginform"]["uname_login"].value;
+				var upwd=document.forms["loginform"]["pwd_login"].value;
+
+				if ((ulogin==null || ulogin=="") && (upwd=="" || upwd==null))
+				{
+					alert("Enter Login Credentials");
+					return false;
+				}
+
+				else if (ulogin==null || ulogin=="")
+				{
+					alert("Enter Username");
+					return false;
+				}
+
+				else if (upwd==null || upwd=="")
+				{
+					alert("Enter Password");
+					return false; 
+				}
+			}
+		</script>
+		
 	</head>
+
 	<body style="background-image:url('/static/sold6.jpg');background-repeat:no-repeat;background-position:35% 92%;background-size:46%">
 		<div class="header">
 			<a href="home.html"><h2 class="logo2">$</h2><h2 class="logo1">OLD!</h2></a>
@@ -15,21 +42,23 @@
 		</div>
 		<br><br>
 
-		{%if successmsg %} 
-		<div style="font-size:26px;color:green;position:relative;left:18%;top:8%">
-			<strong>{{successmsg}}</strong> 
+		<div style="font-size:20px;color:red;position: absolute;left:64%;top:21%">
+				<strong> {{error}} </strong>
 		</div>
-		{% endif %}
 
-		<form action='/$old/post' method="post" style="margin-left:7%;width:420px;height:350px" class="signup1">
+		<div style="font-size:22px;color:green;position: absolute;left:67%;top:21%">
+				<strong><strong> {{successmsg}} </strong></strong>
+		</div>
+
+		<form name="loginform" onsubmit="return VerifyLoginDetails()" action='/$old/validatelogin' method="post" style="margin-left:7%;width:420px;height:350px" class="signup1">
 			<h2 style="margin-top:5%;padding-left: 28%;color:#1b1d1c;">Welcome!</h2><br>
 			<strong style="color:blue">Username : </strong> <input name="uname_login" style="position:absolute;left:70%;right:2%" placeholder="username..." class="class2" /><br><br>
 			<strong style="color:blue">Password : </strong> <input name="pwd_login" style="position:absolute;left:70%;right: 2%" type="password" placeholder="password..." class="class2" /><br><br><br>
 			<a href="/$old/post"><button style="color:blue;margin-left:30%;padding-top: 3%;">Login</button></a><br>
-		</form>
+		</form>	
 
-		<form action='/$old/signup' method="post" style="margin-left:5%;position:absolute;left:57%;top:79%;width:340px;height:10px;border: 1px solid transparent">
-			<h5> <a style="color:blue;padding-left:1%;" href="/$old/signup">Not an existing user? Signup now !</a> </h5>
+		<form action='/$old/signup' method="post" style="margin-left:5%;position:absolute;left:64%;top:80%;width:340px;height:1px;border: 1px solid transparent ">
+			<h4> <a style="color:blue;padding-left:1%;" href="/$old/signup">Not an existing user? Signup now !</a> </h4>
 		</form>
 	</body>
 </html>

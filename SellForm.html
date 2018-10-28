@@ -2,32 +2,96 @@
 	<head>
 		<title>Welcome!</title>
 		<link rel="stylesheet" href="{{url_for('static',filename='theme.css')}}"> 
-		<script src="items.js"></script>
+		
+		<script type="text/javascript">
+		function ValidateProductForm()
+		{
+			var pname=document.forms["postform"]["pname"].value;
+			var ptype=document.forms["postform"]["ptype"].value;
+			var initprice=document.forms["postform"]["initbid"].value;
+			var bidincrement=document.forms["postform"]["bidincrement"].value;
+			var validuntil= document.forms["postform"]["validuntil"].value;
+
+			var sysdate=new Date().toJSON().slice(0,10).replace(/-/g,'-');
+
+			if (pname==null || pname=="")
+			{
+				alert("Enter Product Name");
+				return false;
+			}
+
+			else if (ptype==null || ptype=="")
+			{
+				alert("Enter Product Type");
+				return false;
+			}
+
+			else if (initprice==null || initprice=="")
+			{
+				alert("Enter Initial Bid amount");
+				return false;
+			}
+
+			else if (parseInt(initprice)<=0)
+			{
+				alert("Bid Price must be a positive value");
+				return false;
+			}
+
+			else if (bidincrement==null || bidincrement=="")
+			{
+				alert("Enter Bid Increment");
+				return false;
+			}
+
+			else if (parseInt(bidincrement)<=0)
+			{
+				alert("Bid Increment must be a positive value");
+				return false;
+			}
+			
+			else if (new Date(sysdate) > new Date(validuntil))
+			{
+				alert("Validity duration is earlier than current date");
+				return false;
+			}
+		}
+		</script>
+
 	</head>
 	<body style="background-image:url('/static/dontmissout.jpg');background-repeat:no-repeat;background-size:25%;background-position:3% 60%">
 		<!--The header -->
 		<div class="header">
-			<a href="home.html"><h2 class="logo2">$</h2><h2 class="logo1">OLD!</h2></a>
-			<a href="/$old"><button class="login">Log out</button></a>
-			<a href="pages/login"><button class="login">My bids</button></a>
+			<a href="/$old/validatelogin"><h2 class="logo2">$</h2><h2 class="logo1">OLD!</h2></a>
+			<a href="/$old"><button class="login">Logout</button></a>
+			<a href="/$old/showproductlist"><button class="login">All goods</button></a>
+			<form style="width:150px;height:25px;position: absolute;left:28%;top:1%;border: transparent" action="/$old/mybids" method="POST">
+				<input type="hidden" name="username" value="{{username}}">
+				<a href="/$old/mybids"><button name="mybids" class="login" onclick="showmybids()" value="{{uname}}">My bids</button></a>
+			</form>
+			<form style="width:170px;height:25px;position: absolute;left:15%;top:1%;border: transparent" action="/$old/mygoods" method="POST">
+				<input type="hidden" name="username" value="{{username}}">
+				<a href="/$old/mygoods"><button name="mygoods" class="login" onclick="showmygoods()" value="{{uname}}">My goods</button></a>
+			</form>
 		</div>
 	
-		<div style="font-size:20px;padding-left:32%;padding-top: 2%;">Posted by : <strong> <em>username</em></strong></div><br>
+		<div style="font-size:20px;padding-left:32%;padding-top: 2%;">Posted by : <strong> <em>{{username}}</em></strong></div><br>
 		
-		<form action='/$old/postedproduct' method="POST" style="padding-top:2%;margin-left:30%;width:500px;height:350px">
-		Product name: <input placeholder="name of the product" class="class1"></input><br><br>
-		Type:         <input placeholder="type of product" list="prodTypes" class="class1"></input><br><br>
-		Starting bid: <input placeholder="in dollars" class="class1"></input><br><br>
-		Minimum bid:  <input placeholder="also in dollars" class="class1"></input><br><br>
-		Optional:<br>
-		Valid until:  <input placeholder="pick a date" type="date" class="class1"></input><br><br><br>
+		<form name="postform" onsubmit="return ValidateProductForm()" action='/$old/postedproduct' method="POST" style="padding-top:4%;padding-left:5%;padding-bottom:1%;margin-left:30%;width:500px;height:350px;border: solid;border-radius: 15%;">
+		<input type="hidden" name="uname" value="{{username}}">
+		Product name : <input name="pname" placeholder="name of the product" class="class1"></input><br><br><br>
+		Type :       <input name="ptype" placeholder="type of product" list="prodTypes" class="class1"></input><br><br><br>
+		Starting bid : <input name="initbid" placeholder="in rupees" class="class1"></input><br><br><br>
+		Bid Increment :  <input name="bidincrement" placeholder="also in rupees" class="class1"></input><br><br><br>
+		Valid until :  <input name="validuntil" placeholder="pick a date" type="date" class="class1"></input><br><br><br><br>
 		<button href="/$old/postedproduct" style="margin-left:25%;">Create listing</button>
 		</form>
 		<datalist id="prodTypes">
-			<option value="Electronics">
-			<option value="Books">
-			<option value="Antiques">
-			<option value="Collectibles">
-			<option value="Clothing">
+			<option value="Automobiles"></option>
+			<option value="Electronics"></option>
+			<option value="Books"></option>
+			<option value="Antiques"></option>
+			<option value="Collectibles"></option>
+			<option value="Clothing"></option>
 		</datalist>
 	</body>

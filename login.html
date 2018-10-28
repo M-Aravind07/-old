@@ -2,10 +2,66 @@
 	<head>
 		<title>Login</title>
 		<link rel="stylesheet" href="{{url_for('static',filename='theme.css')}}"> 
-		<script src="items.js"></script>
+		<script type="text/javascript">
+    		function ValidateSignupForm()
+            {
+                var uname=document.forms["signupform"]["uname_signup"].value;
+                if (uname=="" || uname==null)
+                {
+                    alert("Please enter username");
+                    return false;
+                }
+
+                var useremail=document.forms["signupform"]["email_signup"].value;
+                if (useremail=="" || useremail==null)
+                {
+                	alert("Please enter email");
+                	return false;
+                }
+
+                var pwd=document.forms["signupform"]["pwd_signup"].value;
+                if (pwd=="" || pwd==null)
+                {
+                    alert("Please enter password");
+                    return false;
+                }
+
+                var confirmpwd=document.forms["signupform"]["confirmpwd_signup"].value;
+                if (confirmpwd=="" || confirmpwd==null)
+                {
+                	alert("Please enter confirmation password");
+                    return false;
+                }
+
+            	if (pwd!==confirmpwd)
+                {
+                    alert("Passwords do not match");
+                    return false;
+                }
+            
+                if (pwd.length<5)
+                {
+                    alert("Password should be atleast 5 characters");
+                    return false;
+                }
+                            
+                else if (pwd.length>20)
+                {
+                    alert("Password is too large. Enter >8 and <20 characters")
+                    return false;
+                 }
+
+                 else
+                 {
+                     return true;
+                 }
+        	 }			
+		</script>
 	</head>
+
 	<body style="background-image:url('/static/signup.jpg');background-repeat:no-repeat;background-position:10% 60%;background-size:53%;">
 		<!--The header -->
+
 		<div class="header">
 			<a href="home.html"><h2 class="logo2">$</h2><h2 class="logo1">OLD!</h2></a>
 		</div><br>
@@ -17,12 +73,12 @@
 		<!--{% endif %}-->
 		<br><br>
 
-		<form action='/$old/signup_success' method="post" style="margin-top:5%;margin-left:7%;width:450px;height:280px" class="signup1">
+		<form name="signupform" onsubmit="return ValidateSignupForm()" action='/$old/signup_post' method="post" style="margin-top:5%;margin-left:7%;width:450px;height:280px" class="signup1">
 			<strong style="color:blue">Username : </strong> <input name="uname_signup" style="position:absolute;left:73%" placeholder="username..." class="class2" /><br><br>
-			<strong style="color:blue">Email : </strong> <input name="email_signup" style="position:absolute;left:73%" type="password" placeholder="password..." class="class2" /><br><br>					
-			<strong style="color:blue">Password : </strong> <input name="pwd_login" style="position:absolute;left:73%" type="password" placeholder="password..." class="class2" /><br><br>
-			<strong style="color:blue">Confirm Password : </strong> <input name="confirmpwd_login" style="position:absolute;left:73%" type="password" placeholder="confirm password..." class="class2" /><br><br><br>
-			<a href="/$old/signup_success"><button style="color:blue;margin-left:30%;padding-top: 3%;">Signup</button></a><br>
+			<strong style="color:blue">Email : </strong> <input name="email_signup" style="position:absolute;left:73%" type="email" placeholder="email..." class="class2" /><br><br>					
+			<strong style="color:blue">Password : </strong> <input name="pwd_signup" style="position:absolute;left:73%" type="password" placeholder="password..." class="class2" /><br><br>
+			<strong style="color:blue">Confirm Password : </strong> <input name="confirmpwd_signup" style="position:absolute;left:73%" type="password" placeholder="confirm password..." class="class2" /><br><br><br>
+			<a href="/$old/signup_post"><button style="color:blue;margin-left:30%;padding-top: 3%;">Signup</button></a><br>
 		</form>
 
 	</body>

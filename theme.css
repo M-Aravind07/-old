@@ -91,12 +91,11 @@ div.page{
 	margin-right: 90px;
 }
 div.page2{
-	float: right;
-	position: fixed;
-	top:17%;
-	border-spacing:15px;
-	margin-right: 90px;
-	width:65%;
+	float: left;
+	position: relative;
+	margin-top: 10%;
+	margin-left: 10%;
+	border-spacing:2%;
 }
 h1{
 	font-family:"Courier";
@@ -156,7 +155,7 @@ button.login{
 	size:30px;
 	border:none;
 	padding:15px 32px;
-	background-color:rgb(176, 224, 230);
+	background-color: blue;
 	color:white;
 	margin-right:10px;
 	margin-top: 20px;
@@ -229,13 +228,14 @@ p{
 	font-family:"Verdana";
 }
 div.gallery {
-    margin: 5px;
+	margin-left: 5%;
     border: 1px solid #ccc;
-    float: left;
+    float: right;
     width: 180px;
 	height:180px;
 	text-align:center;
 }
+
 
 div.gallery:hover {
     border: 1px solid #777;
@@ -293,17 +293,7 @@ input.headerText{
 	margin-right:10px;
 	margin-top: 30px;
 }
-form{
-	border: solid;
-	border-radius: 10px;
-	width: 40%;
-	padding-top:2%;
-	padding-bottom:3%;
-	font-family:"Lucida";
-	font-size:23px;
-	margin-left: 30%;
-	padding-left: 5%;
-}
+
 form.login{
 	border: solid;
 	border-color: grey;
